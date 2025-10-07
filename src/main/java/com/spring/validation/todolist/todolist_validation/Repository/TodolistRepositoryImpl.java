@@ -5,30 +5,28 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.spring.validation.todolist.todolist_validation.Entity.TodolistEntity;
-
 @Component
 public class TodolistRepositoryImpl implements TodolistRepository {
 
-    private List<TodolistEntity> entities = new ArrayList<>();
+    private ArrayList<String> entities = new ArrayList<>();
 
     @Override
-    public void insert(TodolistEntity todo) {
+    public void insert(String todo) {
         entities.add(todo);
     }
 
     @Override
-    public void remove(TodolistEntity todo) {
-        entities.remove(todo.getIndex());
+    public void remove(int index) {
+        entities.remove(index);
     }
 
     @Override
-    public void update(TodolistEntity todo) {
-        entities.set(todo.getIndex(), todo);
+    public void update(int index, String todo) {
+        entities.set(index, todo);
     }
 
     @Override
-    public List<TodolistEntity> showAll() {
+    public List<String> showAll() {
         return entities;
     }
 }

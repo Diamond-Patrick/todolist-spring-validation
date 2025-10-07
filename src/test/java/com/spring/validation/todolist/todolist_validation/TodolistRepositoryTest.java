@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.spring.validation.todolist.todolist_validation.Entity.TodolistEntity;
 import com.spring.validation.todolist.todolist_validation.Repository.TodolistRepositoryImpl;
 
 @SpringBootTest(classes = TodolistRepositoryImpl.class)
@@ -16,38 +15,28 @@ public class TodolistRepositoryTest {
 
     @BeforeEach
     void testInsert() {
-        TodolistEntity todo1 = new TodolistEntity();
-        todo1.setData("test1");
-        todoRepoImpl.insert(todo1);
 
-        TodolistEntity todo2 = new TodolistEntity();
-        todo2.setData("test2");
-        todoRepoImpl.insert(todo2);
-
-        TodolistEntity todo3 = new TodolistEntity();
-        todo3.setData("test3");
-        todoRepoImpl.insert(todo3);
+        todoRepoImpl.insert("test1");
+        todoRepoImpl.insert("test2");
+        todoRepoImpl.insert("test3");
     }
 
     @Test
     void testShowAll() {
-        todoRepoImpl.showAll().forEach(t -> System.out.println(t.getData()));
+        todoRepoImpl.showAll().forEach(t -> System.out.println(t));
     }
 
     @Test
     void testRemove() {
-        TodolistEntity todoTest = new TodolistEntity();
-        todoTest.setIndex(1);
-        todoRepoImpl.remove(todoTest);
+        todoRepoImpl.remove(1);
 
-        todoRepoImpl.showAll().forEach(t -> System.out.println(t.getIndex() + ". " + t.getData()));
+        todoRepoImpl.showAll().forEach(t -> System.out.println(t.indexOf(t) + ". " + t));
     }
 
     @Test
     void testUpdate() {
-        TodolistEntity todo = new TodolistEntity("coba", 2);
-        todoRepoImpl.update(todo);
+        todoRepoImpl.update(1, "coba");
 
-        todoRepoImpl.showAll().forEach(t -> System.out.println(t.getData()));
+        todoRepoImpl.showAll().forEach(t -> System.out.println(t));
     }
 }
