@@ -24,8 +24,7 @@ public class TodolistRepositoryImpl implements TodolistRepository {
 
     @Override
     public void update(TodolistEntity todo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        entities.set(todo.getIndex(), todo);
     }
 
     @Override

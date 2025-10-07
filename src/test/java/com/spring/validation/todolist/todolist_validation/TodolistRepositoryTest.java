@@ -43,4 +43,11 @@ public class TodolistRepositoryTest {
         todoRepoImpl.showAll().forEach(t -> System.out.println(t.getIndex() + ". " + t.getData()));
     }
 
+    @Test
+    void testUpdate() {
+        TodolistEntity todo = new TodolistEntity("coba", 2);
+        todoRepoImpl.update(todo);
+
+        todoRepoImpl.showAll().forEach(t -> System.out.println(t.getData()));
+    }
 }
