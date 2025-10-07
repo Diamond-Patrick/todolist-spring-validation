@@ -27,10 +27,7 @@ public class TodolistServiceImpl implements TodolistService {
 
     @Override
     public boolean delete(@Positive int num) {
-        // TodolistEntity todo = new TodolistEntity();
-        // todo.setIndex(num);
-        // todoRepo.remove(todo);
-
+        todoRepo.remove(num - 1);
         return true;
     }
 

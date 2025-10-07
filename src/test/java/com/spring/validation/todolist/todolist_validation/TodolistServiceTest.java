@@ -1,6 +1,7 @@
 package com.spring.validation.todolist.todolist_validation;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,13 @@ public class TodolistServiceTest {
 
     @Autowired
     TodolistServiceImpl todoService;
+
+    @BeforeEach
+    void testAdd() {
+        todoService.add("test1");
+        todoService.add("test2");
+        todoService.add("test3");
+    }
 
     @Test
     void testAddSuccess() {
@@ -29,10 +37,12 @@ public class TodolistServiceTest {
 
     @Test
     void testShowDatas() {
-        todoService.add("test1");
-        todoService.add("test2");
-        todoService.add("test3");
+        todoService.showData();
+    }
 
+    @Test
+    void testDeleteSuccess() {
+        Assertions.assertTrue(todoService.delete(3));
         todoService.showData();
     }
 }
