@@ -26,4 +26,13 @@ public class TodolistServiceTest {
     void testAddFail() {
         Assertions.assertThrows(ConstraintViolationException.class, () -> todoService.add("    "));
     }
+
+    @Test
+    void testShowDatas() {
+        todoService.add("test1");
+        todoService.add("test2");
+        todoService.add("test3");
+
+        todoService.showData();
+    }
 }

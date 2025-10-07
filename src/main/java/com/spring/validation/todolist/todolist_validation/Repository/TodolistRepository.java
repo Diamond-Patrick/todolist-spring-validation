@@ -2,15 +2,13 @@ package com.spring.validation.todolist.todolist_validation.Repository;
 
 import java.util.List;
 
-import com.spring.validation.todolist.todolist_validation.Entity.TodolistEntity;
-
 public interface TodolistRepository {
 
-    void insert(TodolistEntity todo);
+    void insert(String todo);
 
-    void remove(TodolistEntity todo);
+    void remove(int index);
 
-    void update(TodolistEntity todo);
+    void update(int index, String todo);
 
-    List<TodolistEntity> showAll();
+    List<String> showAll();
 }

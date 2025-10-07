@@ -23,23 +23,20 @@ public class TodolistServiceImpl implements TodolistService {
     @Override
     public boolean add(@NotBlank String data) {
 
-        try {
-            TodolistEntity todo = new TodolistEntity();
-            todo.setData(data.trim());
-            todoRepo.insert(todo);
+        TodolistEntity todo = new TodolistEntity();
+        todo.setData(data.trim());
+        todoRepo.insert(todo);
 
-            return true;
-
-        } catch (ConstraintViolationException e) {
-            log.error(e.getMessage(), e);
-            return false;
-        }
+        return true;
     }
 
     @Override
-    public void delete(@Positive int num) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    public boolean delete(@Positive int num) {
+        TodolistEntity todo = new TodolistEntity();
+        todo.setIndex(num);
+        todoRepo.remove(todo);
+
+        return true;
     }
 
     @Override
@@ -50,8 +47,7 @@ public class TodolistServiceImpl implements TodolistService {
 
     @Override
     public void showData() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'showData'");
+        todoRepo.showAll().forEach(t -> System.out.println((t.getIndex() + 1) + ". " + t.getData()));
     }
 
 }
