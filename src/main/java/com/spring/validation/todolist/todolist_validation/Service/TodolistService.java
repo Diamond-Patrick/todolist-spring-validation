@@ -9,7 +9,7 @@ public interface TodolistService {
 
     boolean delete(@Positive int num);
 
-    void update(@Positive int index, @NotBlank String data);
+    boolean update(@Positive int index, @NotBlank String data);
 
     void showData();
 }

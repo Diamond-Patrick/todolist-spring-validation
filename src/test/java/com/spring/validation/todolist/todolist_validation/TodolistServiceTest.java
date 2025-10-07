@@ -45,4 +45,21 @@ public class TodolistServiceTest {
         Assertions.assertTrue(todoService.delete(3));
         todoService.showData();
     }
+
+    @Test
+    void testDeleteFail() {
+        Assertions.assertThrows(ConstraintViolationException.class, () -> todoService.delete(0));
+    }
+
+    @Test
+    void testUpdateSuccess() {
+        Assertions.assertTrue(todoService.update(2, "coba aja dulu"));
+        todoService.showData();
+    }
+
+    @Test
+    void testUpdateFail() {
+        Assertions.assertThrows(ConstraintViolationException.class, () -> todoService.update(0, "gg"));
+        Assertions.assertThrows(ConstraintViolationException.class, () -> todoService.update(2, "       "));
+    }
 }

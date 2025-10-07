@@ -32,9 +32,9 @@ public class TodolistServiceImpl implements TodolistService {
     }
 
     @Override
-    public void update(@Positive int index, @NotBlank String data) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public boolean update(@Positive int index, @NotBlank String data) {
+        todoRepo.update(index - 1, data);
+        return true;
     }
 
     @Override
