@@ -10,12 +10,11 @@ import com.spring.validation.todolist.todolist_validation.Entity.TodolistEntity;
 @Component
 public class TodolistRepositoryImpl implements TodolistRepository {
 
-    List<TodolistEntity> entities = new ArrayList<>();
+    private List<TodolistEntity> entities = new ArrayList<>();
 
     @Override
     public void insert(TodolistEntity todo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insert'");
+        entities.add(todo);
     }
 
     @Override
@@ -31,8 +30,7 @@ public class TodolistRepositoryImpl implements TodolistRepository {
     }
 
     @Override
-    public void showAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'showAll'");
+    public List<TodolistEntity> showAll() {
+        return entities;
     }
 }

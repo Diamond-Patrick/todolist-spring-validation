@@ -1,5 +1,7 @@
 package com.spring.validation.todolist.todolist_validation.Repository;
 
+import java.util.List;
+
 import com.spring.validation.todolist.todolist_validation.Entity.TodolistEntity;
 
 public interface TodolistRepository {
@@ -10,5 +12,5 @@ public interface TodolistRepository {
 
     void update(TodolistEntity todo);
 
-    void showAll();
+    List<TodolistEntity> showAll();
 }
