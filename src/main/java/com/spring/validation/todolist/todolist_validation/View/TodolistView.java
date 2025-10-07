@@ -7,9 +7,11 @@ import com.spring.validation.todolist.todolist_validation.Service.TodolistServic
 import com.spring.validation.todolist.todolist_validation.Utilities.UtilityScanner;
 
 import jakarta.validation.ConstraintViolationException;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
+@AllArgsConstructor
 @Slf4j
 public class TodolistView {
 
@@ -19,7 +21,7 @@ public class TodolistView {
     public void mainPage() {
 
         while (true) {
-            System.out.println("T O D O L I S T");
+            System.out.println("\n T O D O L I S T");
             todoService.showData();
             System.out.println("-----------------------------------------");
             System.out.println("1. Add Your Todo");
@@ -49,7 +51,7 @@ public class TodolistView {
 
     public void add() {
 
-        System.out.println("A D D  T O D O L I S T");
+        System.out.println("\n A D D  T O D O L I S T");
 
         String input = UtilityScanner.input("Add new todo (x: back to main page)");
 
@@ -71,7 +73,7 @@ public class TodolistView {
 
     public void delete() {
 
-        System.out.println("D E L E T E  T O D O L I S T");
+        System.out.println("\n D E L E T E  T O D O L I S T");
         String input = UtilityScanner.input("Input the index (x: back to main page)");
 
         if (input.toLowerCase().equals("x")) {
@@ -89,12 +91,16 @@ public class TodolistView {
             } catch (IndexOutOfBoundsException e) {
                 log.error(e.getMessage(), e);
                 System.out.println("your index is not found");
+
+            } catch (NumberFormatException e) {
+                log.error(e.getMessage(), e);
+                System.out.println("you must fill the number only");
             }
         }
     }
 
     public void update() {
-        System.out.println("U P D A T E  T O D O L I S T");
+        System.out.println("\n U P D A T E  T O D O L I S T");
         String index = UtilityScanner.input("Input the index");
         String todo = UtilityScanner.input("Input the index");
 
@@ -108,6 +114,10 @@ public class TodolistView {
         } catch (IndexOutOfBoundsException e) {
             log.error(e.getMessage(), e);
             System.out.println("your index is not found");
+
+        } catch (NumberFormatException e) {
+            log.error(e.getMessage(), e);
+            System.out.println("you must fill the number only");
         }
     }
 }
