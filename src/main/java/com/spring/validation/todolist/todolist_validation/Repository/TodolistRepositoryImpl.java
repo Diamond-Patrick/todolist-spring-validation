@@ -19,8 +19,7 @@ public class TodolistRepositoryImpl implements TodolistRepository {
 
     @Override
     public void remove(TodolistEntity todo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        entities.remove(todo.getIndex());
     }
 
     @Override

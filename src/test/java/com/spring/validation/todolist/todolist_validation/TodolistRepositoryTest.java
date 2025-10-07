@@ -1,5 +1,6 @@
 package com.spring.validation.todolist.todolist_validation;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,7 @@ public class TodolistRepositoryTest {
     @Autowired
     TodolistRepositoryImpl todoRepoImpl;
 
-    @Test
+    @BeforeEach
     void testInsert() {
         TodolistEntity todo1 = new TodolistEntity();
         todo1.setData("test1");
@@ -26,8 +27,20 @@ public class TodolistRepositoryTest {
         TodolistEntity todo3 = new TodolistEntity();
         todo3.setData("test3");
         todoRepoImpl.insert(todo3);
+    }
 
+    @Test
+    void testShowAll() {
         todoRepoImpl.showAll().forEach(t -> System.out.println(t.getData()));
+    }
+
+    @Test
+    void testRemove() {
+        TodolistEntity todoTest = new TodolistEntity();
+        todoTest.setIndex(1);
+        todoRepoImpl.remove(todoTest);
+
+        todoRepoImpl.showAll().forEach(t -> System.out.println(t.getIndex() + ". " + t.getData()));
     }
 
 }
