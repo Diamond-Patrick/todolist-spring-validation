@@ -12,4 +12,6 @@ import lombok.Setter;
 public class TodolistEntity {
 
     private String data;
+
+    private int index;
 }
